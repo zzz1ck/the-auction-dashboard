@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "8000:8000"
+    volumes:
+      - /app/node_modules
+      - ./web:/app
+    restart: on-failure
+  ui:
+    build:
+        context: ./web/client
+        dockerfile: Dockerfile
+    container_name: ui
+    depends_on:
+      - api
+    volumes:
+        - /app/node_modules
+        - ./web/client:/app
+    ports:
+        - "9000:9000"
+    links:
+      - "api"
+    restart: on-failure

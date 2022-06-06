@@ -1,0 +1,11 @@
+todo
+__*
+yarn-*
+npm-*
+.vscode
+web/client/public/bundle*
+web/public/*
+*/node_modules
+*/*/node_modules
+.env.*
+web/dist/

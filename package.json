@@ -1,0 +1,29 @@
+{
+  "name": "the-auction-dashboard",
+  "version": "1.0.0",
+  "description": "simple dashboard for the-auction.io dapp",
+  "main": "",
+  "scripts": {
+    "docker:build": "docker-compose -p the-auction-dashboard build",
+    "docker:down": "docker-compose -p the-auction-dashboard down",
+    "docker:up": "docker-compose -p the-auction-dashboard up",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzz1ck/near-challenges.git"
+  },
+  "keywords": [
+    "the-auction",
+    "the-auction.io",
+    "near",
+    "dapp",
+    "web3"
+  ],
+  "author": "zz1ck",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/zzz1ck/near-challenges/issues"
+  },
+  "homepage": "https://github.com/zzz1ck/near-challenges#readme"
+}

@@ -1,0 +1,7 @@
+FROM node:16.12.0
+WORKDIR /usr/local/bin/web
+COPY . /usr/local/bin/web/
+RUN npm install
+RUN npm install --prefix client
+RUN npm run --prefix client build
+CMD ["npm", "start"]

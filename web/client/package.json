@@ -1,0 +1,63 @@
+{
+  "name": "ui",
+  "author": "zz1ck",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development"
+  },
+  "volta": {
+    "node": "16.12.0",
+    "yarn": "1.22.10"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "peerDependencies": {
+    "@emotion/react": ">=11",
+    "@emotion/styled": ">=11",
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "dependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.17.12",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@types/lodash": "^4.14.182",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.5",
+    "@types/react-icons": "^3.0.0",
+    "@types/webpack-env": "^1.17.0",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-twin": "^1.0.2",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.4.0",
+    "react-query": "^3.39.0",
+    "tailwindcss": "^3.0.13",
+    "ts-loader": "^9.3.0",
+    "twin.macro": "^2.8.2",
+    "typescript": "^4.7.2",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.2.1"
+  }
+}
