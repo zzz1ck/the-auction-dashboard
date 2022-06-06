@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zzz1ck/near-challenges.git"
+    "url": "git+https://github.com/zzz1ck/the-auction-dashboard.git"
   },
   "keywords": [
     "the-auction",
@@ -23,7 +23,7 @@
   "author": "zz1ck",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/zzz1ck/near-challenges/issues"
+    "url": "https://github.com/zzz1ck/the-auction-dashboard/issues"
   },
-  "homepage": "https://github.com/zzz1ck/near-challenges#readme"
+  "homepage": "https://github.com/zzz1ck/the-auction-dashboard#readme"
 }
