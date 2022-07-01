@@ -11,7 +11,9 @@ export default function HotAuctions({ auctions }: { auctions: [] }): JSX.Element
       </h1>
       <div tw="grid grid-cols-2 md:grid-cols-5 select-none">
         {auctions
-          .sort((x: CardEntity, y: CardEntity) => Number(y.lastBidId ?? 0) - Number(x.lastBidId ?? 0))
+          .sort(
+            (x: CardEntity, y: CardEntity) => Number(y.lastBidId ?? 0) - Number(x.lastBidId ?? 0)
+          )
           .map((entity: CardEntity) => (
             <div key={entity.id} tw="flex flex-col w-full relative justify-center p-[5%] mb-[10%]">
               <a
@@ -29,9 +31,10 @@ export default function HotAuctions({ auctions }: { auctions: [] }): JSX.Element
                 href={`https://the-auction.io/nft/${entity.cardId}?from=zz1ck.near`}
               />
               <div tw="flex flex-col w-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 justify-center items-center text-sm rounded-b-xl p-1">
-                <p tw="truncate max-w-[90%]">{entity.lastBid.ownerId}</p>
+                <p tw="truncate max-w-[90%]">{entity.lastBid?.ownerId || 'no bids yet'}</p>
                 <p tw="flex flex-row">
-                  {usePriceFormat(entity.lastBid.price)} <NearSymbol tw="w-3 ml-0.5 light:invert" />
+                  {usePriceFormat(entity.lastBid?.price || entity.startPrice)}{' '}
+                  <NearSymbol tw="w-3 ml-0.5 light:invert" />
                 </p>
               </div>
             </div>
