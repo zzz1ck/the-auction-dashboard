@@ -24,9 +24,21 @@ export default function Bootstrapper(): JSX.Element {
 
   if (results.some(({ error }) => !!error)) {
     return (
-      <p tw="text-red-600 absolute top-1/2 text-center w-full">
-        An error has occurred!
-      </p>
+      <div tw="absolute top-1/2 text-center w-full">
+        <p tw="text-red-600">An error has occurred!</p>
+        <p tw="text-xs text-gray-600 dark:text-gray-200">
+          It's happening time to time cuz app works with public postgres from{' '}
+          <a
+            href="https://github.com/near/near-indexer-for-explorer"
+            target="_blank"
+            rel="noreferrer noopener"
+            tw="underline hover:no-underline"
+          >
+            near-indexer
+          </a>
+          ...
+        </p>
+      </div>
     );
   }
 
