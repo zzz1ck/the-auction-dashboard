@@ -20,8 +20,8 @@
     "dapp",
     "web3"
   ],
-  "author": "zz1ck",
-  "license": "GPL-3.0-or-later",
+  "author": "zz1ck <zz1ck@pm.me>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zzz1ck/the-auction-dashboard/issues"
   },
