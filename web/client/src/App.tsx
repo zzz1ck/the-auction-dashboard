@@ -9,7 +9,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider initialTheme='light'>
       <GlobalStyles />
-      <div tw="w-full min-h-screen bg-white text-zinc-900 dark:bg-zinc-900 dark:text-white p-4">
+      <div tw="flex w-full min-h-screen bg-white text-zinc-900 dark:bg-zinc-900 dark:text-white p-4">
         <Bootstrapper />
       </div>
     </ThemeProvider>

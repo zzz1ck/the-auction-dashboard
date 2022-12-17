@@ -1,7 +1,7 @@
 {
   "name": "the-auction-dashboard",
-  "version": "1.0.0",
-  "description": "simple dashboard for the-auction.io dapp",
+  "version": "1.0.1",
+  "description": "Simple dashboard for the-auction.io $NEAR dApp",
   "main": "",
   "scripts": {
     "docker:build": "docker-compose -p the-auction-dashboard build",

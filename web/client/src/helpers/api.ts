@@ -1,8 +1,8 @@
-import { AUCTION_API_URL, NEAR_TO_FIAT_URL } from 'helpers/constants';
+import { AUCTION_API_URL, NEAR_TO_FIAT_URL, DEFAULT_PAGE_LIMIT } from 'helpers/constants';
 
-function prepareSearchParams(defaultParams: {}, params: Map<string, string[]>): string {
+function prepareSearchParams(defaultParams: {}, arrayParams: Map<string, string[]>): string {
   const searchParams = new URLSearchParams(defaultParams);
-  for (const [key, paramList] of params) {
+  for (const [key, paramList] of arrayParams) {
     if (paramList?.length) {
       paramList.forEach((value, index) => searchParams.append(`${key}[${index}]`, value));
     }
@@ -10,17 +10,47 @@ function prepareSearchParams(defaultParams: {}, params: Map<string, string[]>): 
   return searchParams.toString();
 };
 
-export const fetchHotAuctions = async () => {
+// async function fetchAuctionListings(searchParams: string) {
+//   return await fetch(`${AUCTION_API_URL}/listings?${searchParams}`).then((res) => res.json());
+// };
+
+// export const fetchNFTListings = (searchParams: string) =>
+//   fetch(`${AUCTION_API_URL}/listings?${searchParams}`).then((res) => res.json());
+
+export const doFetchAndJSON = (path: string) => {
+  if (path) {
+    return fetch(`${AUCTION_API_URL}${path}`).then((res) => res.json());
+  }
+  return new Error('Cannot download the data, there is no `path` provided.');
+}
+
+export const fetchMostBiddableNFTList = async () => {
   const searchParams = prepareSearchParams(
-    { limit: '10' },
+    { limit: '10', fields: ['title', 'cardId', 'lastBidId', 'startPrice'] },
     new Map([
-      ['join', ['card', 'title', 'card.contract', 'lastBid']],
-      ['filter', ['status||$eq||InProgress']],
+      [
+        'join',
+        [
+          'card||burned,media,cachedMedia,previewMedia,previewCachedMedia',
+          'lastBid||ownerId,price',
+        ],
+      ],
+      ['filter', ['status||$eq||InProgress', 'lastBidEntityId||$notnull']],
       ['sort', ['lastBidId,DESC']],
     ])
   );
-  const res = await fetch(`${AUCTION_API_URL}/listings?${searchParams}`);
-  return await res.json();
+  return await doFetchAndJSON(`/listings?${searchParams}`);
+};
+
+export const fetchActorsWithSoldNFT = async ({ pageParam = 0 }) => {
+  const searchParams = prepareSearchParams(
+    { limit: DEFAULT_PAGE_LIMIT, offset: pageParam, fields: ['walletId', 'avatarUrl'] },
+    new Map([
+      ['join', ['listings||bids,nftContractId,tokenId,lastBidId', 'listings.bids||price,ownerId']],
+      ['filter', ['listings.lastBidEntityId||$notnull']],
+    ])
+  );
+  return await doFetchAndJSON(`/account?${searchParams}`);
 };
 
 export const fetchUserAvatar = (account: string) =>
@@ -28,6 +58,6 @@ export const fetchUserAvatar = (account: string) =>
 
 export const fetchNearFiat = () => fetch(NEAR_TO_FIAT_URL).then((res) => res.json());
 
-export const fetchTxByContract = () => fetch(`/api/v1/transactions`).then((res) => res.json());
+// export const fetchTxByContract = () => fetch(`/api/v1/transactions`).then((res) => res.json());
 
-export const fetchBiddersByContract = () => fetch(`/api/v1/bidders`).then((res) => res.json());
+// export const fetchBiddersByContract = () => fetch(`/api/v1/bidders`).then((res) => res.json());

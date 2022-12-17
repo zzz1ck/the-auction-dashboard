@@ -15,7 +15,8 @@
     "noImplicitReturns": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "jsxImportSource": "@emotion/react"
+    "jsxImportSource": "@emotion/react",
+    "typeRoots": ["node_modules/@types", "types"]
   },
   "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.d.ts", "types"],
   "exclude": ["node_modules", "public"]
